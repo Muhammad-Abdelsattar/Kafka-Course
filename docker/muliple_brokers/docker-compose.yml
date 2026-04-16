@@ -1,6 +1,6 @@
 services:
   kafka-1:
-    image: docker.io/bitnami/kafka:4.0.0
+    image: docker.io/bitnamilegacy/kafka:4.0.0
     container_name: kafka-1
     user: root
     networks:
@@ -19,7 +19,7 @@ services:
       - kafka_1_data:/bitnami/kafka
 
   kafka-2:
-    image: docker.io/bitnami/kafka:4.0.0
+    image: docker.io/bitnamilegacy/kafka:4.0.0
     container_name: kafka-2
     user: root
     networks:
@@ -38,7 +38,7 @@ services:
       - kafka_2_data:/bitnami/kafka
 
   kafka-3:
-    image: docker.io/bitnami/kafka:4.0.0
+    image: docker.io/bitnamilegacy/kafka:4.0.0
     container_name: kafka-3
     user: root
     networks:
