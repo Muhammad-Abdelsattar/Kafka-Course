@@ -9,8 +9,8 @@ Create topics, understand partitions, produce messages with and without keys, an
 ## Step 0 — Start the Environment
 
 ```bash
-docker compose up -d
-docker compose ps
+docker compose -f docker/simple/docker-compose.yml up -d
+docker compose -f docker/simple/docker-compose.yml ps
 ```
 
 Open **<http://localhost:12000>** (Kafka UI) in your browser and keep it open.
@@ -241,7 +241,7 @@ docker exec -it kafka kafka-topics.sh \
 ## Step 10 — Clean Up
 
 ```bash
-docker compose down -v
+docker compose -f docker/simple/docker-compose.yml down -v
 ```
 
 ---
