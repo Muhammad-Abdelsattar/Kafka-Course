@@ -1,6 +1,6 @@
 services:
   kafka:
-    image: docker.io/bitnami/kafka:4.0.0
+    image: docker.io/bitnamilegacy/kafka:4.0.0
     container_name: kafka
     hostname: kafka
     user: root
