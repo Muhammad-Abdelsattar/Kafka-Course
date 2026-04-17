@@ -18,7 +18,7 @@ git clone https://github.com/Muhammad-Abdelsattar/Kafka-Course.git
 cd Kafka-Course
 ```
 
-### Lab 1 — Single Broker
+### Lab 1 - Single Broker
 
 ```bash
 # Start
@@ -30,7 +30,7 @@ open http://localhost:12000
 # Follow along in LAB1-Basics.md
 ```
 
-### Lab 2 — 3-Broker Cluster
+### Lab 2 - 3-Broker Cluster
 
 ```bash
 # Start
