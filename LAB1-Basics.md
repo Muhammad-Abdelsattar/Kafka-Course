@@ -6,7 +6,7 @@ Create topics, understand partitions, produce messages with and without keys, an
 
 ---
 
-## Step 0 — Start the Environment
+## Step 0 - Start the Environment
 
 ```bash
 docker compose -f docker/simple/docker-compose.yml up -d
@@ -19,9 +19,9 @@ Open **<http://localhost:12000>** (Kafka UI) in your browser and keep it open.
 
 ---
 
-## Step 1 — Verify the Broker
+## Step 1 - Verify the Broker
 
-Quick health check — if the broker is reachable, this prints API version info:
+Quick health check - if the broker is reachable, this prints API version info:
 
 ```bash
 docker exec -it kafka kafka-broker-api-versions.sh \
@@ -32,7 +32,7 @@ Ignore the output, we just want to make sure the broker is running.
 
 ---
 
-## Step 2 — Create Your First Topic
+## Step 2 - Create Your First Topic
 
 A **topic** is a named feed that holds records. We start with the simplest setup: **1 partition, 1 replica.**
 
@@ -54,11 +54,11 @@ docker exec -it kafka kafka-topics.sh \
   --topic my-first-topic
 ```
 
-The output shows **Leader**, **Replicas**, and **Isr** — on a single broker, they all point to the same node (becuase we only have one broker).
+The output shows **Leader**, **Replicas**, and **Isr** - on a single broker, they all point to the same node (becuase we only have one broker).
 
 ---
 
-## Step 3 — Multiple Partitions
+## Step 3 - Multiple Partitions
 
 **Partitions** are the unit of parallelism. Splitting a topic into partitions lets multiple consumers read in parallel.
 
@@ -80,11 +80,11 @@ docker exec -it kafka kafka-topics.sh \
   --topic multi-partition-topic
 ```
 
-You should see 3 lines — one per partition.
+You should see 3 lines - one per partition.
 
 ---
 
-## Step 4 — Invalid Replication Factor
+## Step 4 - Invalid Replication Factor
 
 You cannot have more replicas than brokers. Try it:
 
@@ -101,7 +101,7 @@ Read the error and try to explain why this fails.
 
 ---
 
-## Step 5 — Produce Messages Without Keys
+## Step 5 - Produce Messages Without Keys
 
 Without a key, Kafka distributes records across partitions in a round-robin fashion.
 
@@ -124,7 +124,7 @@ docker exec -it kafka kafka-console-consumer.sh \
 
 ---
 
-## Step 6 — Produce Messages With Keys
+## Step 6 - Produce Messages With Keys
 
 A **key** guarantees that all records sharing the same key go to the **same partition**, preserving order per key.
 
@@ -167,7 +167,7 @@ Confirm that all `user-alice` records are in the same partition, and all `user-b
 
 ---
 
-## Step 7 — Offsets
+## Step 7 - Offsets
 
 Every record in a partition gets a sequential **offset** starting at 0.
 Offsets are unique within a partition but not across partitions.
@@ -188,7 +188,7 @@ Try the same for `--partition 1` and `--partition 2`. Verify offsets start at 0 
 
 ---
 
-## Step 8 — Topic Configuration
+## Step 8 - Topic Configuration
 
 Each topic has tuneable settings like retention and segment size:
 
@@ -200,12 +200,12 @@ docker exec -it kafka kafka-configs.sh \
   --describe --all
 ```
 
-Find `retention.ms` — how many days is the default?
-Find `segment.bytes` — what is the default segment size?
+Find `retention.ms` - how many days is the default?
+Find `segment.bytes` - what is the default segment size?
 
 ---
 
-## Step 9 — Alter & Delete Topics
+## Step 9 - Alter & Delete Topics
 
 Increase partitions:
 
@@ -217,7 +217,7 @@ docker exec -it kafka kafka-topics.sh \
   --partitions 4
 ```
 
-Now try to decrease them to 2 — observe the error. Kafka can't shrink partitions because it would have to throw away data (makes sense, right?)
+Now try to decrease them to 2 - observe the error. Kafka can't shrink partitions because it would have to throw away data (makes sense, right?)
 
 ```bash
 docker exec -it kafka kafka-topics.sh \
@@ -238,7 +238,7 @@ docker exec -it kafka kafka-topics.sh \
 
 ---
 
-## Step 10 — Clean Up
+## Step 10 - Clean Up
 
 ```bash
 docker compose -f docker/simple/docker-compose.yml down -v
